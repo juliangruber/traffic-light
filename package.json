@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "A status traffic light for monitoring your site",
   "main": "index.js",
-  "repository": "",
+  "repository": "git://github.com/juliangruber/traffic-light",
   "keywords": [
     "status",
     "traffic",

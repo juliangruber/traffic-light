@@ -1,0 +1,21 @@
+{
+  "name": "traffic-light",
+  "version": "0.0.0",
+  "description": "A status traffic light for monitoring your site",
+  "main": "index.js",
+  "repository": "",
+  "keywords": [
+    "status",
+    "traffic",
+    "light",
+    "monitoring",
+    "indicator",
+    "watch"
+  ],
+  "author": "Julian Gruber <julian@juliangruber.com>",
+  "license": "MIT",
+  "dependencies": {
+    "request": "~2.12.0",
+    "express": "~3.0.6"
+  }
+}

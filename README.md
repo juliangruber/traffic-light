@@ -22,7 +22,7 @@ http://traffic-light/"http://address.to/check"
 http://traffic-light/"http://address.to/check"?timeout=3000
 ```
 
-## usage
+## server
 
 ```bash
 $ traffic-light --help
@@ -35,9 +35,23 @@ Options:
 
 ```
 
+## library
+
+`traffic-light` exports an express request handler.
+
+```js
+var lights = require('traffic-light')
+var express = require('express')
+var app = express()
+
+app.use('lights', lights)
+
+app.listen(3000)
+```
+
 ## installation
 
-As Application:
+As application:
 
 ```bash
 $ npm install -g traffic-light
@@ -48,8 +62,6 @@ As library:
 ```bash
 $ npm install traffic-light
 ```
-
-`traffic-light` exports a request handler from express.
 
 ## license
 

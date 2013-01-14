@@ -7,7 +7,7 @@ Monitor the status of your applications with traffic-lights!
 $ traffic-light --port 4000
 ```
 
-![preview](http://f.cl.ly/items/030O39422a2i370a3M2E/Screen%20Shot%202013-01-14%20at%205.50.30%20PM.png)
+![preview](http://f.cl.ly/items/3E2r0E0F3G0C3r0A0T3X/Screen%20Shot%202013-01-14%20at%205.57.58%20PM.png)
 
 The traffic-light will be
 

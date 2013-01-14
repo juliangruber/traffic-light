@@ -12,10 +12,14 @@
     "indicator",
     "watch"
   ],
+  "bin": {
+    "traffic-light" : "./bin/traffic-light.js"
+  },
   "author": "Julian Gruber <julian@juliangruber.com>",
   "license": "MIT",
   "dependencies": {
     "request": "~2.12.0",
-    "express": "~3.0.6"
+    "express": "~3.0.6",
+    "optimist": "~0.3.5"
   }
 }

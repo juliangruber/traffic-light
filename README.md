@@ -4,7 +4,7 @@
 Monitor the status of your applications with traffic-lights!
 
 ```bash
-$ traffic-light --port 3000
+$ traffic-light --port 4000
 ```
 
 ![preview](http://f.cl.ly/items/030O39422a2i370a3M2E/Screen%20Shot%202013-01-14%20at%205.50.30%20PM.png)
@@ -17,8 +17,10 @@ The traffic-light will be
 
 ## url
 
+```
 http://traffic-light/"http://address.to/check"
 http://traffic-light/"http://address.to/check"?timeout=3000
+```
 
 ## usage
 

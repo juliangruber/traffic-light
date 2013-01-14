@@ -1,4 +1,3 @@
-
 # traffic-light
 
 Monitor the status of your applications with traffic-lights!
@@ -11,9 +10,9 @@ $ traffic-light --port 4000
 
 The traffic-light will be
 
-* __green__, when the Server responds with code 200 in time
-* __yellow__, when a timeout is triggered
-* __red__, when there is an error or the response code isn't 200
+* ![green](https://raw.github.com/juliangruber/traffic-light/master/images/green.png) when the Server responds with code 200 in time
+* ![yellow](https://raw.github.com/juliangruber/traffic-light/master/images/yellow.png), when a timeout is triggered
+* ![red](https://raw.github.com/juliangruber/traffic-light/master/images/red.png), when there is an error or the response code isn't 200
 
 ## url
 

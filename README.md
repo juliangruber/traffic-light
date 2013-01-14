@@ -1,6 +1,6 @@
 # traffic-light
 
-Monitor the status of your applications with traffic-lights!
+Monitor the status of your websites and applications with traffic-lights!
 
 ```bash
 $ traffic-light --port 4000

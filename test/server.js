@@ -9,6 +9,12 @@ app.get('/red', function (req, res) {
   res.status(500).end('error')
 })
 
-app.listen(9990)
+app.get('/regex-bad', function (req, res) {
+  res.end('an error occured')
+})
+
+app.get('/regex-good', function (req, res) {
+  res.end('ok')
+})
 
 module.exports = app

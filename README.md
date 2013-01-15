@@ -16,14 +16,18 @@ The traffic-light will be
 * ![yellow](https://raw.github.com/juliangruber/traffic-light/master/images/yellow.png), when a timeout is triggered
 * ![red](https://raw.github.com/juliangruber/traffic-light/master/images/red.png), when there is an error or the response code isn't 200
 
-## url
+## URL
 
 ```
 http://traffic-light/ + encodeURIComponent(http://address.to/check)
-http://traffic-light/ + encodeURIComponent(http://address.to/check) + /?timeout=1000
 ```
 
-## server
+### Parameters
+
+* `?timeout=x` show a __yellow__ light if the server responded ok but took more than `x` milliseconds to answer
+* `?regex=y` show a __red__ light if the server responded ok but the response body doesn't match `y`. Might need to be uri-encoded.
+
+## Server
 
 ```bash
 $ traffic-light --help
@@ -36,7 +40,7 @@ Options:
 
 ```
 
-## library
+## Library
 
 `traffic-light` exports an express request handler.
 
@@ -50,7 +54,7 @@ app.use('lights', lights)
 app.listen(3000)
 ```
 
-## installation
+## Installation
 
 As application:
 
@@ -64,7 +68,7 @@ As library:
 $ npm install traffic-light
 ```
 
-## license
+## License
 
 Copyright (c) 2012 Julian Gruber &lt;julian@juliangruber.com&gt;
 

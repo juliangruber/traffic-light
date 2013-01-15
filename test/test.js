@@ -9,12 +9,10 @@ var red = fs.readFileSync(__dirname + '/../images/red.png')
 var yellow = fs.readFileSync(__dirname + '/../images/yellow.png')
 var green = fs.readFileSync(__dirname + '/../images/green.png')
 
-// make sure the server is running
-/*var server = require('./server')
-
+var server = require('./server').listen(9990)
 after(function () {
   server.close()
-})*/
+})
 
 describe('color', function () {
   // color (err, status, dt) -> color
@@ -33,7 +31,59 @@ describe('color', function () {
   })
 })
 
-describe('service', function () {
+describe('regex', function () {
+  it("should be red when the regex isn't matched", function (done) {
+     request(light)
+       .get('/' + encodeURIComponent("http://localhost:9990/regex-bad") + '/?regex=ok')
+       .expect('Content-Type', 'image/png')
+       .expect(200)
+       .end(function (err, res) {
+         if (err) return done(err)
+         res.text.should.equal(red.toString())
+         done()
+       })
+   })
+   
+   it('should be green when the regex is matched', function (done) {
+     request(light)
+       .get('/' + encodeURIComponent("http://localhost:9990/regex-good") + '/?regex=ok')
+       .expect('Content-Type', 'image/png')
+       .expect(200)
+       .end(function (err, res) {
+         if (err) return done(err)
+         res.text.should.equal(green.toString())
+         done()
+       })
+   })
+})
+
+describe('timeout', function () {
+  it('should be yellow when the server takes too long to respond', function (done) {
+    request(light)
+      .get('/' + encodeURIComponent("http://localhost:9990/green") + '/?timeout=0')
+      .expect('Content-Type', 'image/png')
+      .expect(200)
+      .end(function (err, res) {
+        if (err) return done(err)
+        res.text.should.equal(yellow.toString())
+        done()
+      })
+  })
+  
+  it('should be green when the server responds in time', function (done) {
+    request(light)
+      .get('/' + encodeURIComponent("http://localhost:9990/green") + '/?timeout=5000')
+      .expect('Content-Type', 'image/png')
+      .expect(200)
+      .end(function (err, res) {
+        if (err) return done(err)
+        res.text.should.equal(green.toString())
+        done()
+      })
+  })
+})
+
+describe('error', function () {
   it('should be red when an error occurs', function (done) {
     request(light)
       .get('/' + encodeURIComponent('http://asdjleifjsludhgkuhldijvlidjkusrhf.com') + '/?timeout=0')
@@ -54,30 +104,6 @@ describe('service', function () {
       .end(function (err, res) {
         if (err) return done(err)
         res.text.should.equal(red.toString())
-        done()
-      })
-  })
-  
-  it('should be yellow when the server takes too long to respond', function (done) {
-    request(light)
-      .get('/' + encodeURIComponent("http://localhost:9990/green") + '/?timeout=0')
-      .expect('Content-Type', 'image/png')
-      .expect(200)
-      .end(function (err, res) {
-        if (err) return done(err)
-        res.text.should.equal(yellow.toString())
-        done()
-      })
-  })
-  
-  it('should be green when the server responds in time', function (done) {
-    request(light)
-      .get('/' + encodeURIComponent("http://localhost:9990/green"))
-      .expect('Content-Type', 'image/png')
-      .expect(200)
-      .end(function (err, res) {
-        if (err) return done(err)
-        res.text.should.equal(green.toString())
         done()
       })
   })

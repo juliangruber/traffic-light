@@ -11,7 +11,7 @@ app.get(/(http|https):\/\/([a-z0-9\.\/\?]+)/, function (req, res, next) {
   var opts = {}
   if ('timeout' in req.query) opts.timeout = req.query.timeout
   
-  request(url, opts, function (err, res) {
-    res.sendfile(__dirname + '/images/' + color(err, res) + '.png')
+  request(url, opts, function (err, _res) {
+    res.sendfile(__dirname + '/images/' + color(err, _res) + '.png')
   })
 })

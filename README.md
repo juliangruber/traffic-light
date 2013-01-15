@@ -2,6 +2,8 @@
 
 Monitor the status of your websites and applications with traffic-lights!
 
+[![Build Status](https://secure.travis-ci.org/juliangruber/traffic-light.png)](http://travis-ci.org/juliangruber/traffic-light)
+
 ```bash
 $ traffic-light --port 4000
 ```

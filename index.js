@@ -3,16 +3,19 @@ var request = require('request')
 var color = require('./lib/color')
 
 var app = express()
-module.exports = app
 
-app.get(/(http|https):\/\/([a-z0-9-\.\:/\?]+)/, function (req, res, next) {
+app.get(/(http|https):\/\/([a-z0-9-\.\:/\?]+)/, function (req, res) {
   var url = req.params[0] + '://' + req.params[1]
-  console.log('url', url)
   
-  var opts = {}
-  if ('timeout' in req.query) opts.timeout = req.query.timeout
+  var start = Date.now()
   
-  request(url, opts, function (err, _res) {
-    res.sendfile(__dirname + '/images/' + color(err, _res) + '.png')
+  var timeout = Number.MAX_VALUE
+  if ('timeout' in req.query) timeout = req.query.timeout
+  
+  request(url, function (err, _res) {
+    var dt = timeout - (Date.now() - start)
+    res.sendfile(__dirname + '/images/' + color(err, _res? _res.statusCode : null, dt) + '.png')
   })
 })
+
+module.exports = app

@@ -4,8 +4,8 @@ var color = require('./lib/color')
 
 var app = express()
 
-app.get(/(http|https):\/\/([a-z0-9-\.\:/\?]+)/, function (req, res) {
-  var url = req.params[0] + '://' + req.params[1]
+app.get('/:url', function (req, res) {
+  var url = req.params.url
   
   var start = Date.now()
   

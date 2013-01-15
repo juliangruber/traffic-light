@@ -10,7 +10,11 @@ var yellow = fs.readFileSync(__dirname + '/../images/yellow.png')
 var green = fs.readFileSync(__dirname + '/../images/green.png')
 
 // make sure the server is running
-require('./server')
+/*var server = require('./server')
+
+after(function () {
+  server.close()
+})*/
 
 describe('color', function () {
   // color (err, status, dt) -> color
@@ -32,7 +36,7 @@ describe('color', function () {
 describe('service', function () {
   it('should be red when an error occurs', function (done) {
     request(light)
-      .get('/"http://asdjleifjsludhgkuhldijvlidjkusrhf.com"/?timeout=0')
+      .get('/' + encodeURIComponent('http://asdjleifjsludhgkuhldijvlidjkusrhf.com') + '/?timeout=0')
       .expect('Content-Type', 'image/png')
       .expect(200)
       .end(function (err, res) {
@@ -44,7 +48,7 @@ describe('service', function () {
 
   it('should be red when a bad status code is returned', function (done) {
     request(light)
-      .get('/"http://localhost:9990/red"/?timeout=0')
+      .get('/' + encodeURIComponent("http://localhost:9990/red") + '/?timeout=0')
       .expect('Content-Type', 'image/png')
       .expect(200)
       .end(function (err, res) {
@@ -56,7 +60,7 @@ describe('service', function () {
   
   it('should be yellow when the server takes too long to respond', function (done) {
     request(light)
-      .get('/"http://localhost:9990/green"/?timeout=0')
+      .get('/' + encodeURIComponent("http://localhost:9990/green") + '/?timeout=0')
       .expect('Content-Type', 'image/png')
       .expect(200)
       .end(function (err, res) {
@@ -68,7 +72,7 @@ describe('service', function () {
   
   it('should be green when the server responds in time', function (done) {
     request(light)
-      .get('/"http://localhost:9990/green"/')
+      .get('/' + encodeURIComponent("http://localhost:9990/green"))
       .expect('Content-Type', 'image/png')
       .expect(200)
       .end(function (err, res) {

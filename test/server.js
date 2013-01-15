@@ -10,3 +10,5 @@ app.get('/red', function (req, res) {
 })
 
 app.listen(9990)
+
+module.exports = app

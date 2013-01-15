@@ -6,9 +6,9 @@ Monitor the status of your websites and applications with traffic-lights!
 
 ```bash
 $ traffic-light --port 4000
+$ curl -o light.png http://localhost:4000/https%3A%2F%2Fgithub.com%2F
+$ open light.png
 ```
-
-![preview](http://f.cl.ly/items/3E2r0E0F3G0C3r0A0T3X/Screen%20Shot%202013-01-14%20at%205.57.58%20PM.png)
 
 The traffic-light will be
 
@@ -19,8 +19,8 @@ The traffic-light will be
 ## url
 
 ```
-http://traffic-light/"http://address.to/check"
-http://traffic-light/"http://address.to/check"?timeout=3000
+http://traffic-light/ + encodeURIComponent(http://address.to/check)
+http://traffic-light/ + encodeURIComponent(http://address.to/check) + /?timeout=1000
 ```
 
 ## server

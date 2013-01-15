@@ -5,8 +5,9 @@ var color = require('./lib/color')
 var app = express()
 module.exports = app
 
-app.get(/(http|https):\/\/([a-z0-9\.\/\?]+)/, function (req, res, next) {
+app.get(/(http|https):\/\/([a-z0-9-\.\:/\?]+)/, function (req, res, next) {
   var url = req.params[0] + '://' + req.params[1]
+  console.log('url', url)
   
   var opts = {}
   if ('timeout' in req.query) opts.timeout = req.query.timeout

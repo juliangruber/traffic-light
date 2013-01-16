@@ -57,6 +57,32 @@ describe('regex', function () {
    })
 })
 
+describe('not-regex', function () {
+  it("should be red when the regex is matched", function (done) {
+     request(light)
+       .get('/' + encodeURIComponent("http://localhost:9990/regex-good") + '/?not-regex=ok')
+       .expect('Content-Type', 'image/png')
+       .expect(200)
+       .end(function (err, res) {
+         if (err) return done(err)
+         res.text.should.equal(red.toString())
+         done()
+       })
+   })
+   
+   it("should be green when the regex isn't matched", function (done) {
+     request(light)
+       .get('/' + encodeURIComponent("http://localhost:9990/regex-bad") + '/?not-regex=ok')
+       .expect('Content-Type', 'image/png')
+       .expect(200)
+       .end(function (err, res) {
+         if (err) return done(err)
+         res.text.should.equal(green.toString())
+         done()
+       })
+   })
+})
+
 describe('timeout', function () {
   it('should be yellow when the server takes too long to respond', function (done) {
     request(light)

@@ -13,7 +13,10 @@ app.get('/:url', function (req, res) {
   if ('timeout' in req.query) timeout = req.query.timeout
   
   request(url, { timeout : 5000 }, function (err, _res) {
-    if (!err && 'regex' in req.query) err = !_res.body.match(new RegExp(req.query.regex))
+    if (!err) {
+      if('regex' in req.query) err = !_res.body.match(new RegExp(req.query['regex']))
+      if('not-regex' in req.query) err = _res.body.match(new RegExp(req.query['not-regex']))
+    }
     var dt = timeout - (Date.now() - start)
     res.sendfile(__dirname + '/images/' + color(err, _res? _res.statusCode : null, dt) + '.png')
   })

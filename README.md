@@ -24,7 +24,7 @@ http://traffic-light/ + encodeURIComponent(http://address.to/check)
 
 ### Parameters
 
-* `?timeout=x` show a __yellow__ light if the server responded ok but took more than `x` milliseconds to answer
+* `?timeout=x` show a __yellow__ light if the server responded ok but took more than `x` milliseconds to answer.
 * `?regex=y` show a __red__ light if the server responded ok but the response body doesn't match `y`. Might need to be uri-encoded.
 * `?not-regex=z` show a __red__ light if the server responded ok but the response body does match `z`. Might need to be uri-encoded.
 

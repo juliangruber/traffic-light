@@ -134,3 +134,12 @@ describe('error', function () {
       })
   })
 })
+
+describe('favicon', function () {
+  it('should have one', function (done) {
+    request(light)
+      .get('/favicon.ico')
+      .expect('Content-Type', 'image/x-icon')
+      .expect(200, done)
+  })
+})

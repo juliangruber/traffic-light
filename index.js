@@ -3,6 +3,7 @@ var request = require('request')
 var color = require('./lib/color')
 
 var app = express()
+app.use(express.favicon())
 
 app.get('/:url', function (req, res) {
   var url = req.params.url
